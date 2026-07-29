@@ -6,15 +6,37 @@ namespace RW_Upgrader
 {
     public class CompUpgradable : ThingComp
     {
+        public const int FailCooldownTicks = GenDate.TicksPerHour;
+
+        public const int SuccessCooldownTicks = GenDate.TicksPerDay;
+
         private bool autoUpgradeEnabled;
 
         private bool autoUpgradeMaterialEnabled;
+
+        private int nextQualityAttemptTick;
+
+        private int nextMaterialAttemptTick;
 
         public CompProperties_Upgradable Props => (CompProperties_Upgradable)props;
 
         public bool AutoUpgradeEnabled => autoUpgradeEnabled;
 
         public bool AutoUpgradeMaterialEnabled => autoUpgradeMaterialEnabled;
+
+        public bool QualityOnCooldown => Find.TickManager.TicksGame < nextQualityAttemptTick;
+
+        public bool MaterialOnCooldown => Find.TickManager.TicksGame < nextMaterialAttemptTick;
+
+        public void SetQualityCooldown(int ticks)
+        {
+            nextQualityAttemptTick = Find.TickManager.TicksGame + ticks;
+        }
+
+        public void SetMaterialCooldown(int ticks)
+        {
+            nextMaterialAttemptTick = Find.TickManager.TicksGame + ticks;
+        }
 
         public bool CanUpgrade
         {
@@ -40,6 +62,8 @@ namespace RW_Upgrader
             base.PostExposeData();
             Scribe_Values.Look(ref autoUpgradeEnabled, "autoUpgradeEnabled", false);
             Scribe_Values.Look(ref autoUpgradeMaterialEnabled, "autoUpgradeMaterialEnabled", false);
+            Scribe_Values.Look(ref nextQualityAttemptTick, "nextQualityAttemptTick", 0);
+            Scribe_Values.Look(ref nextMaterialAttemptTick, "nextMaterialAttemptTick", 0);
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)

@@ -124,6 +124,7 @@ namespace RW_Upgrader
             if (newUpgradable != null)
             {
                 newUpgradable.SetAutoUpgradeStates(autoQuality, autoMaterial);
+                newUpgradable.SetMaterialCooldown(CompUpgradable.SuccessCooldownTicks);
             }
 
             Messages.Message("RW_Upgrader_MaterialUpgradeSucceeded".Translate(newThing.LabelShort, oldStuff.LabelAsStuff, newStuff.LabelAsStuff), newThing, MessageTypeDefOf.PositiveEvent);

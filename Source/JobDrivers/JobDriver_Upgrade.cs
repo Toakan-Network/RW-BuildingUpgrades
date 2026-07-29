@@ -72,6 +72,7 @@ namespace RW_Upgrader
         private void FinishUpgrade(Pawn actor, Thing target)
         {
             UpgradeUtility.ConsumeNearbyResources(target, UpgradeUtility.RequiredResources(target));
+            target.TryGetComp<CompUpgradable>()?.SetQualityCooldown(CompUpgradable.SuccessCooldownTicks);
 
             CompQuality compQuality = target.TryGetComp<CompQuality>();
             if (compQuality == null)

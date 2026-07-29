@@ -23,6 +23,11 @@ namespace RW_Upgrader
 
         public override float GetPriority(Pawn pawn, TargetInfo t)
         {
+            CompUpgradable upgradable = UpgradeUtility.GetUpgradable(t.Thing);
+            if (upgradable != null && upgradable.MaterialOnCooldown)
+            {
+                return 0f;
+            }
             Zone_UpgradeStandard zone = ZoneUpgradeUtility.GetGoverningZone(t.Thing);
             return zone != null && ZoneUpgradeUtility.BelowZoneMaterialMinimum(t.Thing, zone) ? 100f : 0f;
         }
@@ -31,6 +36,10 @@ namespace RW_Upgrader
         {
             CompUpgradable upgradable = UpgradeUtility.GetUpgradable(t);
             if (upgradable == null || !upgradable.AutoUpgradeMaterialEnabled)
+            {
+                return null;
+            }
+            if (upgradable.MaterialOnCooldown)
             {
                 return null;
             }
@@ -46,6 +55,7 @@ namespace RW_Upgrader
             ThingDef newStuff = MaterialUpgradeUtility.PickBestStuff(t, pawn);
             if (newStuff == null)
             {
+                upgradable.SetMaterialCooldown(CompUpgradable.FailCooldownTicks);
                 JobFailReason.Is("RW_Upgrader_MissingMaterials".Translate());
                 return null;
             }
@@ -56,6 +66,7 @@ namespace RW_Upgrader
 
             if (!UpgradeUtility.TryFindIngredients(pawn, required, foundThings, foundCounts))
             {
+                upgradable.SetMaterialCooldown(CompUpgradable.FailCooldownTicks);
                 JobFailReason.Is("RW_Upgrader_MissingMaterials".Translate());
                 return null;
             }
