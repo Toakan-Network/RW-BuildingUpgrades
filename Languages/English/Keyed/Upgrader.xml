@@ -7,4 +7,14 @@
   <RW_Upgrader_MissingMaterials>not enough materials nearby</RW_Upgrader_MissingMaterials>
   <RW_Upgrader_UpgradeSucceeded>{0} upgraded from {1} to {2} quality.</RW_Upgrader_UpgradeSucceeded>
   <RW_Upgrader_UpgradeNoChange>{0} upgrade attempt finished with no quality improvement.</RW_Upgrader_UpgradeNoChange>
+
+  <RW_Upgrader_Setting_AutoEnable>Auto-upgrade by default</RW_Upgrader_Setting_AutoEnable>
+  <RW_Upgrader_Setting_AutoEnableDesc>Newly built buildings will have "Auto-upgrade" switched on automatically. Existing buildings aren't affected retroactively.</RW_Upgrader_Setting_AutoEnableDesc>
+  <RW_Upgrader_Setting_AreaRestriction>Restrict auto-upgrade to area</RW_Upgrader_Setting_AreaRestriction>
+  <RW_Upgrader_Setting_AreaMapWide>Map-wide (no restriction)</RW_Upgrader_Setting_AreaMapWide>
+  <RW_Upgrader_Setting_AreaHome>Home area</RW_Upgrader_Setting_AreaHome>
+  <RW_Upgrader_Setting_MaxTier>Maximum upgrade tier: {0}</RW_Upgrader_Setting_MaxTier>
+  <RW_Upgrader_Setting_BaseCost>Base resource cost: {0}%</RW_Upgrader_Setting_BaseCost>
+  <RW_Upgrader_Setting_IncreasePerTier>Increase resource cost per tier</RW_Upgrader_Setting_IncreasePerTier>
+  <RW_Upgrader_Setting_IncreasePerTierDesc>Each successive upgrade tier costs more resources: base cost x (tier number). E.g. a 5% base cost means Awful-&gt;Poor costs 5%, Poor-&gt;Normal costs 10%, and so on.</RW_Upgrader_Setting_IncreasePerTierDesc>
 </LanguageData>

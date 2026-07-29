@@ -47,6 +47,10 @@
       <HintPath>$(UserProfile)\.nuget\packages\krafs.rimworld.ref\1.6.4518\ref\net472\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(UserProfile)\.nuget\packages\krafs.rimworld.ref\1.6.4518\ref\net472\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CompUpgradable.cs" />
@@ -56,6 +60,8 @@
     <Compile Include="WorkGivers\WorkGiver_Upgrade.cs" />
     <Compile Include="FloatMenu\FloatMenuOptionProvider_Upgrade.cs" />
     <Compile Include="Utils\UpgradeUtility.cs" />
+    <Compile Include="Settings\RW_UpgraderSettings.cs" />
+    <Compile Include="Settings\RW_UpgraderMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

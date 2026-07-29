@@ -21,7 +21,7 @@ namespace RW_Upgrader
                 {
                     return false;
                 }
-                return compQuality.Quality != QualityCategory.Legendary;
+                return (int)compQuality.Quality < RW_UpgraderMod.Settings.maxQualityTier;
             }
         }
 
@@ -29,6 +29,15 @@ namespace RW_Upgrader
         {
             base.PostExposeData();
             Scribe_Values.Look(ref autoUpgradeEnabled, "autoUpgradeEnabled", false);
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            if (!respawningAfterLoad)
+            {
+                autoUpgradeEnabled = RW_UpgraderMod.Settings.autoEnableByDefault;
+            }
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()

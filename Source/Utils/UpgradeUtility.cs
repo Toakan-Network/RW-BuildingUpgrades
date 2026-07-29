@@ -50,7 +50,9 @@ namespace RW_Upgrader
         public static List<ThingDefCountClass> RequiredResources(Thing t)
         {
             CompUpgradable upgradable = GetUpgradable(t);
-            float fraction = upgradable?.Props.resourceCostFractionPerTier ?? 0.3f;
+            int qualityOrdinal = (int)(t.TryGetComp<CompQuality>()?.Quality ?? QualityCategory.Normal);
+            float tierMultiplier = RW_UpgraderMod.Settings.increaseCostPerTier ? (qualityOrdinal + 1) : 1;
+            float fraction = (RW_UpgraderMod.Settings.baseResourceCostPercent / 100f) * tierMultiplier * (upgradable?.Props.resourceCostFractionPerTier ?? 1f);
             List<ThingDefCountClass> result = new List<ThingDefCountClass>();
 
             if (t.def.costList != null)

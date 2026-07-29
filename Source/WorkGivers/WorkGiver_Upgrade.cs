@@ -21,21 +21,33 @@ namespace RW_Upgrader
             return pawn?.Map == null;
         }
 
-        public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+        public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             CompUpgradable upgradable = UpgradeUtility.GetUpgradable(t);
             if (upgradable == null || !upgradable.AutoUpgradeEnabled)
             {
-                return false;
+                return null;
             }
-            return UpgradeUtility.PawnCanUpgradeNow(pawn, t);
-        }
-
-        public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
-        {
-            if (!HasJobOnThing(pawn, t, forced))
+            if (!UpgradeUtility.PawnCanUpgradeNow(pawn, t))
             {
                 return null;
+            }
+
+            switch (RW_UpgraderMod.Settings.areaRestrictionMode)
+            {
+                case AreaRestrictionMode.Home:
+                    if (!t.Map.areaManager.Home[t.Position])
+                    {
+                        return null;
+                    }
+                    break;
+                case AreaRestrictionMode.Custom:
+                    Area area = t.Map.areaManager.GetLabeled(RW_UpgraderMod.Settings.customAreaLabel);
+                    if (area != null && !area[t.Position])
+                    {
+                        return null;
+                    }
+                    break;
             }
 
             List<ThingDefCountClass> required = UpgradeUtility.RequiredResources(t);
