@@ -1,46 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Building Upgrades</name>
-	<author>Tad</author>
+    <name>Building Upgrades</name>
+    <author>Tad</author>
+    <url>https://steamcommunity.com/sharedfiles/filedetails/?id=3773870715</url>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
-<description xml:whitespace="preserve">
+    <description xml:whitespace="preserve">
 Pawns want the best. They get annoyed when everything around them looks awful.
 
 Let's give them the opportunity to make their life better!
 
 Introducing Building Upgrades!
 
-Furniture and buildings come in a range of quality tiers — Awful, Poor, Normal, Good, Excellent, Masterwork, Legendary — but vanilla gives you no way to improve one after it's built. Slap together an Awful bed on day one and it stays Awful forever — unless you tear it out and start from scratch.
+Furniture and buildings come in a range of quality tiers — Awful, Poor, Normal, Good, Excellent, Masterwork, Legendary — but vanilla gives you no way to improve one after it's built. Slap together an Awful bed on day one and it stays Awful forever, unless you tear it out and start from scratch.
 
-Not anymore. Your construction crew can now rework a placed building, trying to bring it up a notch, using the exact same skill-based quality roll as building it fresh (so a Legendary result is just as possible, and just as rare, as crafting one from raw materials).
+Not anymore. Your construction crew can now rework a placed building in two ways:
 
-The upgrade chance itself isn't some custom formula — it hooks directly into vanilla's own quality-generation feature, the same one that decides the quality of anything your colonists build or craft. Higher Construction skill means better odds, exactly like normal building, and nothing here changes those odds or adds a hidden ceiling based on the worker's skill.
+[b]Quality upgrades[/b] — bring a building up a notch, using the exact same skill-based quality roll as building it fresh (so a Legendary result is just as possible, and just as rare, as crafting one from raw materials). This isn't some custom formula — it hooks directly into vanilla's own quality-generation feature, the same one that decides the quality of anything your colonists build or craft. Higher Construction skill means better odds, exactly like normal building.
 
-Two ways to put them to work:
-- Select a colonist and right-click an upgradable building for a one-off "Upgrade" order.
-- Flip the "Auto-upgrade" toggle on a building and any free construction pawn will pick it up automatically, same as other work types.
-
-Fully configurable from Mod Options:
-- Have auto-upgrade switched on by default for anything new you build.
-- Restrict automatic upgrading to your Home Area, any custom area, or leave it map-wide.
-- Cap how far buildings are allowed to climb — maybe you're happy stopping at Good instead of chasing Legendary everywhere.
-- Tune the resource cost from 1% to 100% of the original build cost, and optionally make each successive tier cost more than the last.
+[b]Material upgrades[/b] — rebuild a Wood building in Stone, or a Stone building in Metal, one tier at a time, never backwards. Colonists automatically pick the best material they can afford and reach, and quality is re-rolled on the swap.
 
 A bad roll never makes things worse than they already were — worst case, you burn materials and colonist-hours for no visible change.
+
+Two ways to put your crew to work:
+- Select a colonist and right-click an upgradable building for a one-off "Upgrade" order.
+- Flip the "Auto-upgrade" (or "Auto-upgrade material") toggle on a building and any free construction pawn will pick it up automatically, same as other work types.
+
+[b]Upgrade Standard zones[/b]
+
+Draw a zone that sets a minimum required quality and/or material tier for everything inside it — a bedroom you want kept Good, a workshop you're happy leaving Wood. Buildings inside get bumped to the front of the queue over equally-eligible ones elsewhere, without force-enabling anything you haven't already switched on yourself. A zone's minimum can even push a building past your global tier cap, so one special room can outshine the rest of the base without raising the ceiling everywhere.
+
+Fully configurable from Mod Options:
+- Have auto-upgrade (quality and/or material) switched on by default for anything new you build.
+- Restrict automatic upgrading to your Home Area, any custom area, or leave it map-wide.
+- Cap how far quality is allowed to climb, and separately how far material is allowed to climb — maybe you're happy stopping at Good and Stone instead of chasing Legendary Metal everywhere.
+- Tune the resource cost from 1% to 100% of the original build cost, and optionally make each successive tier cost more than the last.
+- Pick exactly which stuffs are allowed for each material tier, if you want to exclude something from the auto-picker.
 
 [b]Settings:[/b]
 
 [b]Auto-upgrade by default[/b] — Newly built buildings get the "Auto-upgrade" toggle switched on automatically, so you don't have to click through every item you place. Buildings you already have don't get changed retroactively when you flip this.
 
+[b]Auto-upgrade material by default[/b] — Same idea, but for the material-upgrade toggle.
+
 [b]Restrict auto-upgrade to area[/b] — Controls where the automatic work queue is allowed to look for eligible buildings: your Home Area, any custom area you've drawn, or map-wide with no restriction at all. This only affects the automatic queue — a direct right-click order always works regardless of area.
 
-[b]Maximum upgrade tier[/b] — Sets a ceiling on how far buildings are allowed to climb, both automatically and manually. Set it to Good if you don't want colonists chasing Legendary furniture across the whole base; set it to Legendary for no ceiling at all.
+[b]Maximum upgrade tier[/b] — Sets a ceiling on how far buildings are allowed to climb in quality, both automatically and manually. Set it to Good if you don't want colonists chasing Legendary furniture across the whole base; set it to Legendary for no ceiling at all. An Upgrade Standard zone can raise this ceiling for the buildings it covers.
+
+[b]Maximum material tier[/b] — Same idea, but for material tier (Wood/Stone/Metal). Defaults to Stone.
 
 [b]Base resource cost[/b] — What percentage of a building's original construction cost is spent on each upgrade attempt, from 1% to 100%. Defaults to 15%.
 
 [b]Increase resource cost per tier[/b] — When enabled, each successive upgrade attempt costs more: base cost × tier number. So a 5% base cost means Awful→Poor costs 5%, Poor→Normal costs 10%, Normal→Good costs 15%, and so on. Leave it off for a flat cost every time.
-</description>
-<packageId>BuildingUpgrades.Tad.RW.Core</packageId>
+
+[b]Allow upgrade to...[/b] — Per material-tier checkboxes letting you exclude specific stuffs from being auto-picked during a material upgrade (e.g. allow Granite but not Marble).
+    </description>
+    <packageId>BuildingUpgrades.Tad.RW.Core</packageId>
 </ModMetaData>
