@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <KeyBindingDef>
+    <defName>RW_Upgrader_AutoUpgradeMaterial</defName>
+    <label>toggle auto-upgrade material</label>
+    <description>Toggles the auto-upgrade material gizmo on selected buildings.</description>
+    <category>ModsGeneral</category>
+    <defaultKeyCodeA>M</defaultKeyCodeA>
+  </KeyBindingDef>
+</Defs>

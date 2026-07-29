@@ -110,6 +110,7 @@ namespace RW_Upgrader
                     icon = TexCommand.RearmTrap,
                     defaultLabel = "RW_Upgrader_AutoUpgradeMaterial".Translate(),
                     defaultDesc = "RW_Upgrader_AutoUpgradeMaterialDesc".Translate(),
+                    hotKey = RW_UpgraderKeyBindingDefOf.RW_Upgrader_AutoUpgradeMaterial,
                     isActive = () => autoUpgradeMaterialEnabled,
                     toggleAction = delegate
                     {

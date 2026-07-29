@@ -57,6 +57,7 @@
     <Compile Include="Components\CompUpgradable.cs" />
     <Compile Include="Components\CompProperties_Upgradable.cs" />
     <Compile Include="DefsOf\JobDefOf.cs" />
+    <Compile Include="DefsOf\RW_UpgraderKeyBindingDefOf.cs" />
     <Compile Include="JobDrivers\JobDriver_Upgrade.cs" />
     <Compile Include="JobDrivers\JobDriver_UpgradeMaterial.cs" />
     <Compile Include="WorkGivers\WorkGiver_Upgrade.cs" />
