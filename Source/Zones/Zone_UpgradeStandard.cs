@@ -56,6 +56,15 @@ namespace RW_Upgrader
                 yield return gizmo;
             }
 
+            yield return new Command_Toggle
+            {
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/HideZone"),
+                defaultLabel = Hidden ? "CommandUnhideLabel".Translate() : "CommandHideLabel".Translate(),
+                defaultDesc = "CommandHideZoneDesc".Translate(),
+                isActive = () => Hidden,
+                toggleAction = delegate { Hidden = !Hidden; }
+            };
+
             yield return new Command_Action
             {
                 defaultLabel = "RW_Upgrader_ZoneSetMinQuality".Translate(CurrentQualityLabel),
