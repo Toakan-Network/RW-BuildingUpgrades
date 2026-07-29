@@ -6,15 +6,41 @@
         <li>1.6</li>
     </supportedVersions>
 <description xml:whitespace="preserve">
-Furniture and buildings come in a quality tier (Awful..Legendary), but vanilla gives you no way to improve one after it's built - your only option is deconstructing and re-crafting from scratch.
+Pawns want the best. They get annoyed when everything around them looks awful.
 
-This mod adds an Upgrade job. A construction-skilled colonist can work on a placed piece of quality furniture to attempt to raise its quality tier, consuming a share of the original build cost and following the exact same skill-based quality curve as normal construction (so a legendary result is just as possible, and just as rare, as building it fresh).
+Let's give them the opportunity to make their life better!
 
-Two ways to order it:
-- Select a colonist and right-click an upgradable building for a one-off "Upgrade thing" order.
-- Toggle "Auto-upgrade" on a building (a new gizmo) to have it queued automatically for any free construction pawn, same as other work types.
+Introducing Building Upgrades!
 
-A poor roll never makes the item worse than it already was - worst case you spend materials and time for no visible change.
+Furniture and buildings come in a range of quality tiers — Awful, Poor, Normal, Good, Excellent, Masterwork, Legendary — but vanilla gives you no way to improve one after it's built. Slap together an Awful bed on day one and it stays Awful forever — unless you tear it out and start from scratch.
+
+Not anymore. Your construction crew can now rework a placed building, trying to bring it up a notch, using the exact same skill-based quality roll as building it fresh (so a Legendary result is just as possible, and just as rare, as crafting one from raw materials).
+
+The upgrade chance itself isn't some custom formula — it hooks directly into vanilla's own quality-generation feature, the same one that decides the quality of anything your colonists build or craft. Higher Construction skill means better odds, exactly like normal building, and nothing here changes those odds or adds a hidden ceiling based on the worker's skill.
+
+Two ways to put them to work:
+- Select a colonist and right-click an upgradable building for a one-off "Upgrade" order.
+- Flip the "Auto-upgrade" toggle on a building and any free construction pawn will pick it up automatically, same as other work types.
+
+Fully configurable from Mod Options:
+- Have auto-upgrade switched on by default for anything new you build.
+- Restrict automatic upgrading to your Home Area, any custom area, or leave it map-wide.
+- Cap how far buildings are allowed to climb — maybe you're happy stopping at Good instead of chasing Legendary everywhere.
+- Tune the resource cost from 1% to 100% of the original build cost, and optionally make each successive tier cost more than the last.
+
+A bad roll never makes things worse than they already were — worst case, you burn materials and colonist-hours for no visible change.
+
+[b]Settings:[/b]
+
+[b]Auto-upgrade by default[/b] — Newly built buildings get the "Auto-upgrade" toggle switched on automatically, so you don't have to click through every item you place. Buildings you already have don't get changed retroactively when you flip this.
+
+[b]Restrict auto-upgrade to area[/b] — Controls where the automatic work queue is allowed to look for eligible buildings: your Home Area, any custom area you've drawn, or map-wide with no restriction at all. This only affects the automatic queue — a direct right-click order always works regardless of area.
+
+[b]Maximum upgrade tier[/b] — Sets a ceiling on how far buildings are allowed to climb, both automatically and manually. Set it to Good if you don't want colonists chasing Legendary furniture across the whole base; set it to Legendary for no ceiling at all.
+
+[b]Base resource cost[/b] — What percentage of a building's original construction cost is spent on each upgrade attempt, from 1% to 100%. Defaults to 15%.
+
+[b]Increase resource cost per tier[/b] — When enabled, each successive upgrade attempt costs more: base cost × tier number. So a 5% base cost means Awful→Poor costs 5%, Poor→Normal costs 10%, Normal→Good costs 15%, and so on. Leave it off for a flat cost every time.
 </description>
 <packageId>BuildingUpgrades.Tad.RW.Core</packageId>
 </ModMetaData>
