@@ -57,5 +57,11 @@ namespace RW_Upgrader
             Zone_UpgradeStandard zone = GetGoverningZone(t);
             return Math.Max(RW_UpgraderMod.Settings.maxQualityTier, zone?.minQualityTier ?? -1);
         }
+
+        public static int EffectiveMaxMaterialTier(Thing t)
+        {
+            Zone_UpgradeStandard zone = GetGoverningZone(t);
+            return Math.Max(RW_UpgraderMod.Settings.maxMaterialTier, zone?.minMaterialTier ?? -1);
+        }
     }
 }

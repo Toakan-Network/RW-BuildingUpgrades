@@ -25,6 +25,7 @@
   <RW_Upgrader_MaterialUpgradeSucceeded>{0} rebuilt from {1} to {2}.</RW_Upgrader_MaterialUpgradeSucceeded>
   <RW_Upgrader_Setting_AutoEnableMaterial>Auto-upgrade material by default</RW_Upgrader_Setting_AutoEnableMaterial>
   <RW_Upgrader_Setting_AllowUpgradeTo>Allow upgrade to {0}</RW_Upgrader_Setting_AllowUpgradeTo>
+  <RW_Upgrader_Setting_MaxMaterialTier>Maximum material tier: {0}</RW_Upgrader_Setting_MaxMaterialTier>
 
   <RW_Upgrader_ZoneLabel>Upgrade standard zone</RW_Upgrader_ZoneLabel>
   <RW_Upgrader_DesignateZone>Upgrade standard zone</RW_Upgrader_DesignateZone>

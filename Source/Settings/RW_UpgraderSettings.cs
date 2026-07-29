@@ -14,6 +14,7 @@ namespace RW_Upgrader
         public AreaRestrictionMode areaRestrictionMode = AreaRestrictionMode.Home;
         public string customAreaLabel = "";
         public int maxQualityTier = (int)QualityCategory.Legendary;
+        public int maxMaterialTier = 1;
         public float baseResourceCostPercent = 15f;
         public bool increaseCostPerTier = false;
         public Dictionary<string, string> allowedStuffsPerCategory = new Dictionary<string, string>();
@@ -26,6 +27,7 @@ namespace RW_Upgrader
             Scribe_Values.Look(ref areaRestrictionMode, "areaRestrictionMode", AreaRestrictionMode.Home);
             Scribe_Values.Look(ref customAreaLabel, "customAreaLabel", "");
             Scribe_Values.Look(ref maxQualityTier, "maxQualityTier", (int)QualityCategory.Legendary);
+            Scribe_Values.Look(ref maxMaterialTier, "maxMaterialTier", 1);
             Scribe_Values.Look(ref baseResourceCostPercent, "baseResourceCostPercent", 15f);
             Scribe_Values.Look(ref increaseCostPerTier, "increaseCostPerTier", false);
             Scribe_Collections.Look(ref allowedStuffsPerCategory, "allowedStuffsPerCategory", LookMode.Value, LookMode.Value);

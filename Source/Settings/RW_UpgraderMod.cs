@@ -78,9 +78,21 @@ namespace RW_Upgrader
 
             listing.GapLine();
 
-            foreach (StuffCategoryDef category in DefDatabase<StuffCategoryDef>.AllDefsListForReading
+            List<StuffCategoryDef> tieredCategories = DefDatabase<StuffCategoryDef>.AllDefsListForReading
                 .Where(c => c.GetModExtension<MaterialTierExtension>() != null)
-                .OrderBy(c => c.GetModExtension<MaterialTierExtension>().tier))
+                .OrderBy(c => c.GetModExtension<MaterialTierExtension>().tier)
+                .ToList();
+
+            if (tieredCategories.Count > 0)
+            {
+                int highestTier = tieredCategories.Max(c => c.GetModExtension<MaterialTierExtension>().tier);
+                StuffCategoryDef maxCategory = tieredCategories.FirstOrDefault(c => c.GetModExtension<MaterialTierExtension>().tier == Settings.maxMaterialTier);
+                listing.Label("RW_Upgrader_Setting_MaxMaterialTier".Translate(maxCategory?.LabelCap ?? "RW_Upgrader_NoRequirement".Translate()));
+                Settings.maxMaterialTier = (int)listing.Slider(Settings.maxMaterialTier, 0f, highestTier);
+                listing.Gap();
+            }
+
+            foreach (StuffCategoryDef category in tieredCategories)
             {
                 List<ThingDef> members = DefDatabase<ThingDef>.AllDefsListForReading
                     .Where(td => td.IsStuff && td.stuffProps.categories.Contains(category))

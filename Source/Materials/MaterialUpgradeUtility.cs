@@ -46,6 +46,11 @@ namespace RW_Upgrader
                 return false;
             }
 
+            if (currentTier.Value + 1 > ZoneUpgradeUtility.EffectiveMaxMaterialTier(t))
+            {
+                return false;
+            }
+
             return GetNextTierCategory(currentTier.Value) != null;
         }
 
