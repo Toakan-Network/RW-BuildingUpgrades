@@ -27,9 +27,13 @@ Two ways to put your crew to work:
 - Select a colonist and right-click an upgradable building for a one-off "Upgrade" order.
 - Flip the "Auto-upgrade" (or "Auto-upgrade material") toggle on a building and any free construction pawn will pick it up automatically, same as other work types.
 
+────────────────────────────────
+
 [b]Upgrade Standard zones[/b]
 
 Draw a zone that sets a minimum required quality and/or material tier for everything inside it — a bedroom you want kept Good, a workshop you're happy leaving Wood. Buildings inside get bumped to the front of the queue over equally-eligible ones elsewhere, without force-enabling anything you haven't already switched on yourself. A zone's minimum can even push a building past your global tier cap, so one special room can outshine the rest of the base without raising the ceiling everywhere.
+
+────────────────────────────────
 
 Fully configurable from Mod Options:
 - Have auto-upgrade (quality and/or material) switched on by default for anything new you build.
@@ -37,6 +41,8 @@ Fully configurable from Mod Options:
 - Cap how far quality is allowed to climb, and separately how far material is allowed to climb — maybe you're happy stopping at Good and Stone instead of chasing Legendary Metal everywhere.
 - Tune the resource cost from 1% to 100% of the original build cost, and optionally make each successive tier cost more than the last.
 - Pick exactly which stuffs are allowed for each material tier, if you want to exclude something from the auto-picker.
+
+────────────────────────────────
 
 [b]Settings:[/b]
 
@@ -55,6 +61,11 @@ Fully configurable from Mod Options:
 [b]Increase resource cost per tier[/b] — When enabled, each successive upgrade attempt costs more: base cost × tier number. So a 5% base cost means Awful→Poor costs 5%, Poor→Normal costs 10%, Normal→Good costs 15%, and so on. Leave it off for a flat cost every time.
 
 [b]Allow upgrade to...[/b] — Per material-tier checkboxes letting you exclude specific stuffs from being auto-picked during a material upgrade (e.g. allow Granite but not Marble).
+
+────────────────────────────────
+
+Github: https://github.com/Toakan-Network/RW-BuildingUpgrades
+Support me on Ko-fi: https://ko-fi.com/toakan
     </description>
     <packageId>BuildingUpgrades.Tad.RW.Core</packageId>
 </ModMetaData>
