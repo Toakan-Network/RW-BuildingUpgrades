@@ -34,15 +34,7 @@ namespace RW_Upgrader
             {
                 return null;
             }
-            if (!MaterialUpgradeUtility.CanUpgradeMaterial(t))
-            {
-                return null;
-            }
-            if (t.Faction != pawn.Faction || t.IsForbidden(pawn) || t.IsBurning() || !pawn.CanReserve(t))
-            {
-                return null;
-            }
-            if (pawn.skills == null || pawn.skills.GetSkill(SkillDefOf.Construction).TotallyDisabled)
+            if (!MaterialUpgradeUtility.PawnCanUpgradeMaterialNow(pawn, t))
             {
                 return null;
             }

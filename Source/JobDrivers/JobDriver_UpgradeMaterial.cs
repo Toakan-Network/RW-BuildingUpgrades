@@ -33,7 +33,7 @@ namespace RW_Upgrader
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            this.FailOn(() => !UpgradeUtility.PawnCanUpgradeNow(pawn, Target) || NewStuff == null);
+            this.FailOn(() => !MaterialUpgradeUtility.PawnCanUpgradeMaterialNow(pawn, Target) || NewStuff == null);
 
             Toil gotoBuilding = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 

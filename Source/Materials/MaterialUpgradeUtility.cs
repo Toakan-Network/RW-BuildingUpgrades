@@ -49,6 +49,35 @@ namespace RW_Upgrader
             return GetNextTierCategory(currentTier.Value) != null;
         }
 
+        public static bool PawnCanUpgradeMaterialNow(Pawn pawn, Thing t)
+        {
+            if (!CanUpgradeMaterial(t))
+            {
+                return false;
+            }
+            if (t.Faction != pawn.Faction)
+            {
+                return false;
+            }
+            if (t.IsForbidden(pawn))
+            {
+                return false;
+            }
+            if (t.IsBurning())
+            {
+                return false;
+            }
+            if (pawn.skills == null || pawn.skills.GetSkill(SkillDefOf.Construction).TotallyDisabled)
+            {
+                return false;
+            }
+            if (!pawn.CanReserve(t))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static List<ThingDefCountClass> RequiredResourcesForSwap(Thing t, ThingDef newStuff)
         {
             List<ThingDefCountClass> result = new List<ThingDefCountClass>();
