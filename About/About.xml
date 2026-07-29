@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Building Upgrades</name>
+	<author>Tad</author>
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+<description xml:whitespace="preserve">
+Furniture and buildings come in a quality tier (Awful..Legendary), but vanilla gives you no way to improve one after it's built - your only option is deconstructing and re-crafting from scratch.
+
+This mod adds an Upgrade job. A construction-skilled colonist can work on a placed piece of quality furniture to attempt to raise its quality tier, consuming a share of the original build cost and following the exact same skill-based quality curve as normal construction (so a legendary result is just as possible, and just as rare, as building it fresh).
+
+Two ways to order it:
+- Select a colonist and right-click an upgradable building for a one-off "Upgrade thing" order.
+- Toggle "Auto-upgrade" on a building (a new gizmo) to have it queued automatically for any free construction pawn, same as other work types.
+
+A poor roll never makes the item worse than it already was - worst case you spend materials and time for no visible change.
+</description>
+<packageId>BuildingUpgrades.Tad.RW.Core</packageId>
+</ModMetaData>

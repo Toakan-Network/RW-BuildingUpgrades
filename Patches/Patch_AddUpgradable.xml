@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="FurnitureWithQualityBase"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="BedWithQualityBase"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="ArtBuildingBase"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[building][comps/li/compClass="CompQuality"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
+</Patch>

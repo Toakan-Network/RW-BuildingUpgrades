@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RW_Upgrader_AutoUpgrade>Auto-upgrade</RW_Upgrader_AutoUpgrade>
+  <RW_Upgrader_AutoUpgradeDesc>When enabled, a free construction-skilled colonist will automatically be assigned to upgrade this item's quality when materials are available.</RW_Upgrader_AutoUpgradeDesc>
+  <RW_Upgrader_UpgradeThing>Upgrade {0}</RW_Upgrader_UpgradeThing>
+  <CannotUpgradeThing>Cannot upgrade {0}</CannotUpgradeThing>
+  <RW_Upgrader_MissingMaterials>not enough materials nearby</RW_Upgrader_MissingMaterials>
+  <RW_Upgrader_UpgradeSucceeded>{0} upgraded from {1} to {2} quality.</RW_Upgrader_UpgradeSucceeded>
+  <RW_Upgrader_UpgradeNoChange>{0} upgrade attempt finished with no quality improvement.</RW_Upgrader_UpgradeNoChange>
+</LanguageData>

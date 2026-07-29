@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>Upgrade</defName>
+    <label>upgrade quality</label>
+    <giverClass>RW_Upgrader.WorkGiver_Upgrade</giverClass>
+    <workType>Construction</workType>
+    <priorityInType>40</priorityInType>
+    <verb>upgrade</verb>
+    <gerund>upgrading</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <nonColonistsCanDo>false</nonColonistsCanDo>
+  </WorkGiverDef>
+</Defs>
