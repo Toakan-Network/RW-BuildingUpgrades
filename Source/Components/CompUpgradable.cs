@@ -25,7 +25,7 @@ namespace RW_Upgrader
                 {
                     return false;
                 }
-                return (int)compQuality.Quality < RW_UpgraderMod.Settings.maxQualityTier;
+                return (int)compQuality.Quality < ZoneUpgradeUtility.EffectiveMaxQualityTier(parent);
             }
         }
 

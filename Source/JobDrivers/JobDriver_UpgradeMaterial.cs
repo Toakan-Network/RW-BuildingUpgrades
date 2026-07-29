@@ -93,6 +93,8 @@ namespace RW_Upgrader
             bool autoQuality = oldUpgradable?.AutoUpgradeEnabled ?? false;
             bool autoMaterial = oldUpgradable?.AutoUpgradeMaterialEnabled ?? false;
 
+            int effectiveMaxQualityTier = ZoneUpgradeUtility.EffectiveMaxQualityTier(oldThing);
+
             oldThing.Destroy();
 
             Thing newThing = ThingMaker.MakeThing(def, newStuff);
@@ -112,7 +114,7 @@ namespace RW_Upgrader
                 QualityCategory after = (QualityCategory)Mathf.Clamp(
                     Mathf.Max((int)before, (int)rolled),
                     0,
-                    RW_UpgraderMod.Settings.maxQualityTier);
+                    effectiveMaxQualityTier);
                 newQualityComp.SetQuality(after, ArtGenerationContext.Colony);
             }
 

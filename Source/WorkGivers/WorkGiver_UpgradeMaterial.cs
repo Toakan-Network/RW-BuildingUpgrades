@@ -21,6 +21,12 @@ namespace RW_Upgrader
             return pawn?.Map == null;
         }
 
+        public override float GetPriority(Pawn pawn, TargetInfo t)
+        {
+            Zone_UpgradeStandard zone = ZoneUpgradeUtility.GetGoverningZone(t.Thing);
+            return zone != null && ZoneUpgradeUtility.BelowZoneMaterialMinimum(t.Thing, zone) ? 100f : 0f;
+        }
+
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             CompUpgradable upgradable = UpgradeUtility.GetUpgradable(t);

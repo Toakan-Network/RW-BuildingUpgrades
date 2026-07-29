@@ -68,6 +68,9 @@
     <Compile Include="Materials\MaterialUpgradeUtility.cs" />
     <Compile Include="Settings\RW_UpgraderSettings.cs" />
     <Compile Include="Settings\RW_UpgraderMod.cs" />
+    <Compile Include="Zones\Zone_UpgradeStandard.cs" />
+    <Compile Include="Zones\Designator_ZoneAdd_UpgradeStandard.cs" />
+    <Compile Include="Zones\ZoneUpgradeUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
