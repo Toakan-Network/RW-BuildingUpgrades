@@ -27,4 +27,18 @@
       <li Class="RW_Upgrader.CompProperties_Upgradable" />
     </value>
   </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Wall"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Door"]/comps</xpath>
+    <value>
+      <li Class="RW_Upgrader.CompProperties_Upgradable" />
+    </value>
+  </Operation>
 </Patch>

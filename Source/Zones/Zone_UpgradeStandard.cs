@@ -14,7 +14,9 @@ namespace RW_Upgrader
 
         public int minQualityTier = -1;
 
-        public int minMaterialTier = -1;
+        public int minBuildingMaterialTier = -1;
+
+        public int minFurnitureMaterialTier = -1;
 
         public Zone_UpgradeStandard()
         {
@@ -28,25 +30,27 @@ namespace RW_Upgrader
             ? "RW_Upgrader_NoRequirement".Translate()
             : ((QualityCategory)minQualityTier).GetLabel().CapitalizeFirst();
 
-        private string CurrentMaterialLabel
+        private static string MaterialLabelForTier(int tier)
         {
-            get
+            if (tier < 0)
             {
-                if (minMaterialTier < 0)
-                {
-                    return "RW_Upgrader_NoRequirement".Translate();
-                }
-                StuffCategoryDef category = DefDatabase<StuffCategoryDef>.AllDefsListForReading
-                    .FirstOrDefault(c => c.GetModExtension<MaterialTierExtension>()?.tier == minMaterialTier);
-                return category?.LabelCap ?? "RW_Upgrader_NoRequirement".Translate();
+                return "RW_Upgrader_NoRequirement".Translate();
             }
+            StuffCategoryDef category = DefDatabase<StuffCategoryDef>.AllDefsListForReading
+                .FirstOrDefault(c => c.GetModExtension<MaterialTierExtension>()?.tier == tier);
+            return category?.LabelCap ?? "RW_Upgrader_NoRequirement".Translate();
         }
+
+        private string CurrentBuildingMaterialLabel => MaterialLabelForTier(minBuildingMaterialTier);
+
+        private string CurrentFurnitureMaterialLabel => MaterialLabelForTier(minFurnitureMaterialTier);
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref minQualityTier, "minQualityTier", -1);
-            Scribe_Values.Look(ref minMaterialTier, "minMaterialTier", -1);
+            Scribe_Values.Look(ref minBuildingMaterialTier, "minBuildingMaterialTier", -1);
+            Scribe_Values.Look(ref minFurnitureMaterialTier, "minFurnitureMaterialTier", -1);
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
@@ -85,20 +89,41 @@ namespace RW_Upgrader
 
             yield return new Command_Action
             {
-                defaultLabel = "RW_Upgrader_ZoneSetMinMaterial".Translate(CurrentMaterialLabel),
+                defaultLabel = "RW_Upgrader_ZoneSetMinBuildingMaterial".Translate(CurrentBuildingMaterialLabel),
                 icon = TexCommand.RearmTrap,
                 action = delegate
                 {
                     List<FloatMenuOption> options = new List<FloatMenuOption>
                     {
-                        new FloatMenuOption("RW_Upgrader_NoRequirement".Translate(), delegate { minMaterialTier = -1; })
+                        new FloatMenuOption("RW_Upgrader_NoRequirement".Translate(), delegate { minBuildingMaterialTier = -1; })
                     };
                     foreach (StuffCategoryDef category in DefDatabase<StuffCategoryDef>.AllDefsListForReading
                         .Where(c => c.GetModExtension<MaterialTierExtension>() != null)
                         .OrderBy(c => c.GetModExtension<MaterialTierExtension>().tier))
                     {
                         int tier = category.GetModExtension<MaterialTierExtension>().tier;
-                        options.Add(new FloatMenuOption(category.LabelCap, delegate { minMaterialTier = tier; }));
+                        options.Add(new FloatMenuOption(category.LabelCap, delegate { minBuildingMaterialTier = tier; }));
+                    }
+                    Find.WindowStack.Add(new FloatMenu(options));
+                }
+            };
+
+            yield return new Command_Action
+            {
+                defaultLabel = "RW_Upgrader_ZoneSetMinFurnitureMaterial".Translate(CurrentFurnitureMaterialLabel),
+                icon = TexCommand.RearmTrap,
+                action = delegate
+                {
+                    List<FloatMenuOption> options = new List<FloatMenuOption>
+                    {
+                        new FloatMenuOption("RW_Upgrader_NoRequirement".Translate(), delegate { minFurnitureMaterialTier = -1; })
+                    };
+                    foreach (StuffCategoryDef category in DefDatabase<StuffCategoryDef>.AllDefsListForReading
+                        .Where(c => c.GetModExtension<MaterialTierExtension>() != null)
+                        .OrderBy(c => c.GetModExtension<MaterialTierExtension>().tier))
+                    {
+                        int tier = category.GetModExtension<MaterialTierExtension>().tier;
+                        options.Add(new FloatMenuOption(category.LabelCap, delegate { minFurnitureMaterialTier = tier; }));
                     }
                     Find.WindowStack.Add(new FloatMenu(options));
                 }

@@ -8,6 +8,11 @@ namespace RW_Upgrader
 {
     public static class MaterialUpgradeUtility
     {
+        public static bool IsFurniture(Thing t)
+        {
+            return t.TryGetComp<CompQuality>() != null;
+        }
+
         public static int? GetTier(ThingDef stuffDef)
         {
             if (stuffDef?.stuffProps == null)
@@ -122,9 +127,10 @@ namespace RW_Upgrader
                 return null;
             }
 
+            bool isFurniture = IsFurniture(t);
             IEnumerable<ThingDef> candidates = GenStuff.AllowedStuffsFor(t.def)
                 .Where(s => s.stuffProps.categories.Contains(nextCategory))
-                .Where(s => RW_UpgraderMod.Settings.IsStuffAllowed(nextCategory.defName, s.defName))
+                .Where(s => RW_UpgraderMod.Settings.IsStuffAllowed(isFurniture, nextCategory.defName, s.defName))
                 .OrderByDescending(s => s.GetStatValueAbstract(StatDefOf.MarketValue));
 
             foreach (ThingDef candidate in candidates)

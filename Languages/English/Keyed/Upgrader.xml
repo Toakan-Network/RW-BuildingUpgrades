@@ -13,6 +13,10 @@
   <RW_Upgrader_Setting_AreaRestriction>Restrict auto-upgrade to area</RW_Upgrader_Setting_AreaRestriction>
   <RW_Upgrader_Setting_AreaMapWide>Map-wide (no restriction)</RW_Upgrader_Setting_AreaMapWide>
   <RW_Upgrader_Setting_AreaHome>Home area</RW_Upgrader_Setting_AreaHome>
+  <RW_Upgrader_Setting_Section_General>General</RW_Upgrader_Setting_Section_General>
+  <RW_Upgrader_Setting_Section_FurnitureQuality>Furniture Quality</RW_Upgrader_Setting_Section_FurnitureQuality>
+  <RW_Upgrader_Setting_Section_BuildingMaterials>Building Materials</RW_Upgrader_Setting_Section_BuildingMaterials>
+  <RW_Upgrader_Setting_Section_FurnitureMaterials>Furniture Materials</RW_Upgrader_Setting_Section_FurnitureMaterials>
   <RW_Upgrader_Setting_MaxTier>Maximum upgrade tier: {0}</RW_Upgrader_Setting_MaxTier>
   <RW_Upgrader_Setting_BaseCost>Base resource cost: {0}%</RW_Upgrader_Setting_BaseCost>
   <RW_Upgrader_Setting_IncreasePerTier>Increase resource cost per tier</RW_Upgrader_Setting_IncreasePerTier>
@@ -25,12 +29,14 @@
   <RW_Upgrader_MaterialUpgradeSucceeded>{0} rebuilt from {1} to {2}.</RW_Upgrader_MaterialUpgradeSucceeded>
   <RW_Upgrader_Setting_AutoEnableMaterial>Auto-upgrade material by default</RW_Upgrader_Setting_AutoEnableMaterial>
   <RW_Upgrader_Setting_AllowUpgradeTo>Allow upgrade to {0}</RW_Upgrader_Setting_AllowUpgradeTo>
-  <RW_Upgrader_Setting_MaxMaterialTier>Maximum material tier: {0}</RW_Upgrader_Setting_MaxMaterialTier>
+  <RW_Upgrader_Setting_MaxBuildingMaterialTier>Maximum building material tier: {0}</RW_Upgrader_Setting_MaxBuildingMaterialTier>
+  <RW_Upgrader_Setting_MaxFurnitureMaterialTier>Maximum furniture material tier: {0}</RW_Upgrader_Setting_MaxFurnitureMaterialTier>
 
   <RW_Upgrader_ZoneLabel>Upgrade standard zone</RW_Upgrader_ZoneLabel>
   <RW_Upgrader_DesignateZone>Upgrade standard zone</RW_Upgrader_DesignateZone>
   <RW_Upgrader_DesignateZoneDesc>Designate a zone that sets a minimum required quality and/or material tier for buildings inside it, prioritizing their upgrade over equally-eligible buildings elsewhere. Doesn't force-enable auto-upgrade on anything - buildings still need their own toggle switched on.</RW_Upgrader_DesignateZoneDesc>
   <RW_Upgrader_ZoneSetMinQuality>Minimum quality: {0}</RW_Upgrader_ZoneSetMinQuality>
-  <RW_Upgrader_ZoneSetMinMaterial>Minimum material: {0}</RW_Upgrader_ZoneSetMinMaterial>
+  <RW_Upgrader_ZoneSetMinBuildingMaterial>Minimum building material: {0}</RW_Upgrader_ZoneSetMinBuildingMaterial>
+  <RW_Upgrader_ZoneSetMinFurnitureMaterial>Minimum furniture material: {0}</RW_Upgrader_ZoneSetMinFurnitureMaterial>
   <RW_Upgrader_NoRequirement>No requirement</RW_Upgrader_NoRequirement>
 </LanguageData>

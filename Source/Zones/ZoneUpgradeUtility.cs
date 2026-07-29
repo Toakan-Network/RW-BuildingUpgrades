@@ -44,12 +44,17 @@ namespace RW_Upgrader
 
         public static bool BelowZoneMaterialMinimum(Thing t, Zone_UpgradeStandard zone)
         {
-            if (zone.minMaterialTier < 0 || t.Stuff == null)
+            if (t.Stuff == null)
+            {
+                return false;
+            }
+            int minTier = MaterialUpgradeUtility.IsFurniture(t) ? zone.minFurnitureMaterialTier : zone.minBuildingMaterialTier;
+            if (minTier < 0)
             {
                 return false;
             }
             int? currentTier = MaterialUpgradeUtility.GetTier(t.Stuff);
-            return currentTier != null && currentTier < zone.minMaterialTier;
+            return currentTier != null && currentTier < minTier;
         }
 
         public static int EffectiveMaxQualityTier(Thing t)
@@ -61,7 +66,10 @@ namespace RW_Upgrader
         public static int EffectiveMaxMaterialTier(Thing t)
         {
             Zone_UpgradeStandard zone = GetGoverningZone(t);
-            return Math.Max(RW_UpgraderMod.Settings.maxMaterialTier, zone?.minMaterialTier ?? -1);
+            bool isFurniture = MaterialUpgradeUtility.IsFurniture(t);
+            int globalMax = isFurniture ? RW_UpgraderMod.Settings.maxFurnitureMaterialTier : RW_UpgraderMod.Settings.maxBuildingMaterialTier;
+            int zoneMin = (isFurniture ? zone?.minFurnitureMaterialTier : zone?.minBuildingMaterialTier) ?? -1;
+            return Math.Max(globalMax, zoneMin);
         }
     }
 }

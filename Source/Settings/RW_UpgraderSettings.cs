@@ -14,7 +14,8 @@ namespace RW_Upgrader
         public AreaRestrictionMode areaRestrictionMode = AreaRestrictionMode.Home;
         public string customAreaLabel = "";
         public int maxQualityTier = (int)QualityCategory.Legendary;
-        public int maxMaterialTier = 1;
+        public int maxBuildingMaterialTier = 1;
+        public int maxFurnitureMaterialTier = 1;
         public float baseResourceCostPercent = 15f;
         public bool increaseCostPerTier = false;
         public Dictionary<string, string> allowedStuffsPerCategory = new Dictionary<string, string>();
@@ -27,25 +28,28 @@ namespace RW_Upgrader
             Scribe_Values.Look(ref areaRestrictionMode, "areaRestrictionMode", AreaRestrictionMode.Home);
             Scribe_Values.Look(ref customAreaLabel, "customAreaLabel", "");
             Scribe_Values.Look(ref maxQualityTier, "maxQualityTier", (int)QualityCategory.Legendary);
-            Scribe_Values.Look(ref maxMaterialTier, "maxMaterialTier", 1);
+            Scribe_Values.Look(ref maxBuildingMaterialTier, "maxBuildingMaterialTier", 1);
+            Scribe_Values.Look(ref maxFurnitureMaterialTier, "maxFurnitureMaterialTier", 1);
             Scribe_Values.Look(ref baseResourceCostPercent, "baseResourceCostPercent", 15f);
             Scribe_Values.Look(ref increaseCostPerTier, "increaseCostPerTier", false);
             Scribe_Collections.Look(ref allowedStuffsPerCategory, "allowedStuffsPerCategory", LookMode.Value, LookMode.Value);
             allowedStuffsPerCategory ??= new Dictionary<string, string>();
         }
 
-        public bool IsStuffAllowed(string categoryDefName, string stuffDefName)
+        public bool IsStuffAllowed(bool isFurniture, string categoryDefName, string stuffDefName)
         {
-            if (!allowedStuffsPerCategory.TryGetValue(categoryDefName, out string csv))
+            string key = StuffKey(isFurniture, categoryDefName);
+            if (!allowedStuffsPerCategory.TryGetValue(key, out string csv))
             {
                 return true;
             }
             return csv.Split(',').Contains(stuffDefName);
         }
 
-        public void SetStuffAllowed(string categoryDefName, string stuffDefName, bool allowed, IEnumerable<string> allMembersOfCategory)
+        public void SetStuffAllowed(bool isFurniture, string categoryDefName, string stuffDefName, bool allowed, IEnumerable<string> allMembersOfCategory)
         {
-            HashSet<string> set = allowedStuffsPerCategory.TryGetValue(categoryDefName, out string csv)
+            string key = StuffKey(isFurniture, categoryDefName);
+            HashSet<string> set = allowedStuffsPerCategory.TryGetValue(key, out string csv)
                 ? new HashSet<string>(csv.Split(',').Where(s => s.Length > 0))
                 : new HashSet<string>(allMembersOfCategory);
 
@@ -58,7 +62,12 @@ namespace RW_Upgrader
                 set.Remove(stuffDefName);
             }
 
-            allowedStuffsPerCategory[categoryDefName] = string.Join(",", set);
+            allowedStuffsPerCategory[key] = string.Join(",", set);
+        }
+
+        private static string StuffKey(bool isFurniture, string categoryDefName)
+        {
+            return (isFurniture ? "furniture:" : "building:") + categoryDefName;
         }
     }
 }
