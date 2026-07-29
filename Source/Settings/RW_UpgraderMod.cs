@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,6 +9,8 @@ namespace RW_Upgrader
     public class RW_UpgraderMod : Mod
     {
         public static RW_UpgraderSettings Settings;
+
+        private Vector2 scrollPosition;
 
         public RW_UpgraderMod(ModContentPack content) : base(content)
         {
@@ -21,10 +24,14 @@ namespace RW_Upgrader
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
+            Rect viewRect = new Rect(0f, 0f, inRect.width - 16f, 900f);
+            Widgets.BeginScrollView(inRect, ref scrollPosition, viewRect);
+
             Listing_Standard listing = new Listing_Standard();
-            listing.Begin(inRect);
+            listing.Begin(viewRect);
 
             listing.CheckboxLabeled("RW_Upgrader_Setting_AutoEnable".Translate(), ref Settings.autoEnableByDefault, "RW_Upgrader_Setting_AutoEnableDesc".Translate());
+            listing.CheckboxLabeled("RW_Upgrader_Setting_AutoEnableMaterial".Translate(), ref Settings.autoEnableMaterialByDefault);
 
             listing.Gap();
             string areaLabel = Settings.areaRestrictionMode switch
@@ -69,7 +76,32 @@ namespace RW_Upgrader
 
             listing.CheckboxLabeled("RW_Upgrader_Setting_IncreasePerTier".Translate(), ref Settings.increaseCostPerTier, "RW_Upgrader_Setting_IncreasePerTierDesc".Translate());
 
+            listing.GapLine();
+
+            foreach (StuffCategoryDef category in DefDatabase<StuffCategoryDef>.AllDefsListForReading
+                .Where(c => c.GetModExtension<MaterialTierExtension>() != null)
+                .OrderBy(c => c.GetModExtension<MaterialTierExtension>().tier))
+            {
+                List<ThingDef> members = DefDatabase<ThingDef>.AllDefsListForReading
+                    .Where(td => td.IsStuff && td.stuffProps.categories.Contains(category))
+                    .ToList();
+
+                listing.Gap();
+                listing.Label("RW_Upgrader_Setting_AllowUpgradeTo".Translate(category.LabelCap));
+                foreach (ThingDef stuffDef in members)
+                {
+                    bool allowed = Settings.IsStuffAllowed(category.defName, stuffDef.defName);
+                    bool newVal = allowed;
+                    listing.CheckboxLabeled("  " + stuffDef.LabelCap, ref newVal);
+                    if (newVal != allowed)
+                    {
+                        Settings.SetStuffAllowed(category.defName, stuffDef.defName, newVal, members.Select(m => m.defName));
+                    }
+                }
+            }
+
             listing.End();
+            Widgets.EndScrollView();
         }
     }
 }

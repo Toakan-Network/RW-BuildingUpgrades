@@ -17,4 +17,12 @@
   <RW_Upgrader_Setting_BaseCost>Base resource cost: {0}%</RW_Upgrader_Setting_BaseCost>
   <RW_Upgrader_Setting_IncreasePerTier>Increase resource cost per tier</RW_Upgrader_Setting_IncreasePerTier>
   <RW_Upgrader_Setting_IncreasePerTierDesc>Each successive upgrade tier costs more resources: base cost x (tier number). E.g. a 5% base cost means Awful-&gt;Poor costs 5%, Poor-&gt;Normal costs 10%, and so on.</RW_Upgrader_Setting_IncreasePerTierDesc>
+
+  <RW_Upgrader_AutoUpgradeMaterial>Auto-upgrade material</RW_Upgrader_AutoUpgradeMaterial>
+  <RW_Upgrader_AutoUpgradeMaterialDesc>When enabled, a free construction-skilled colonist will automatically be assigned to rebuild this item in a better material when one is available and allowed.</RW_Upgrader_AutoUpgradeMaterialDesc>
+  <RW_Upgrader_UpgradeMaterialThing>Upgrade {0} to {1}</RW_Upgrader_UpgradeMaterialThing>
+  <CannotUpgradeMaterial>Cannot upgrade material of {0}</CannotUpgradeMaterial>
+  <RW_Upgrader_MaterialUpgradeSucceeded>{0} rebuilt from {1} to {2}.</RW_Upgrader_MaterialUpgradeSucceeded>
+  <RW_Upgrader_Setting_AutoEnableMaterial>Auto-upgrade material by default</RW_Upgrader_Setting_AutoEnableMaterial>
+  <RW_Upgrader_Setting_AllowUpgradeTo>Allow upgrade to {0}</RW_Upgrader_Setting_AllowUpgradeTo>
 </LanguageData>

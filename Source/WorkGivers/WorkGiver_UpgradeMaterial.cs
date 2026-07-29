@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace RW_Upgrader
 {
-    public class WorkGiver_Upgrade : WorkGiver_Scanner
+    public class WorkGiver_UpgradeMaterial : WorkGiver_Scanner
     {
         public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
 
@@ -24,21 +24,35 @@ namespace RW_Upgrader
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             CompUpgradable upgradable = UpgradeUtility.GetUpgradable(t);
-            if (upgradable == null || !upgradable.AutoUpgradeEnabled)
+            if (upgradable == null || !upgradable.AutoUpgradeMaterialEnabled)
             {
                 return null;
             }
-            if (!UpgradeUtility.PawnCanUpgradeNow(pawn, t))
+            if (!MaterialUpgradeUtility.CanUpgradeMaterial(t))
             {
                 return null;
             }
-
+            if (t.Faction != pawn.Faction || t.IsForbidden(pawn) || t.IsBurning() || !pawn.CanReserve(t))
+            {
+                return null;
+            }
+            if (pawn.skills == null || pawn.skills.GetSkill(SkillDefOf.Construction).TotallyDisabled)
+            {
+                return null;
+            }
             if (!UpgradeUtility.PassesAreaRestriction(t))
             {
                 return null;
             }
 
-            List<ThingDefCountClass> required = UpgradeUtility.RequiredResources(t);
+            ThingDef newStuff = MaterialUpgradeUtility.PickBestStuff(t, pawn);
+            if (newStuff == null)
+            {
+                JobFailReason.Is("RW_Upgrader_MissingMaterials".Translate());
+                return null;
+            }
+
+            List<ThingDefCountClass> required = MaterialUpgradeUtility.RequiredResourcesForSwap(t, newStuff);
             List<LocalTargetInfo> foundThings = new List<LocalTargetInfo>();
             List<int> foundCounts = new List<int>();
 
@@ -48,7 +62,8 @@ namespace RW_Upgrader
                 return null;
             }
 
-            Job job = JobMaker.MakeJob(JobDefOf.Upgrade, t);
+            Job job = JobMaker.MakeJob(JobDefOf.UpgradeMaterial, t);
+            job.thingDefToCarry = newStuff;
             if (foundThings.Count > 0)
             {
                 job.targetQueueB = foundThings;

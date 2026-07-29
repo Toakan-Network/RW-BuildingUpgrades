@@ -47,6 +47,20 @@ namespace RW_Upgrader
             return true;
         }
 
+        public static bool PassesAreaRestriction(Thing t)
+        {
+            switch (RW_UpgraderMod.Settings.areaRestrictionMode)
+            {
+                case AreaRestrictionMode.Home:
+                    return t.Map.areaManager.Home[t.Position];
+                case AreaRestrictionMode.Custom:
+                    Area area = t.Map.areaManager.GetLabeled(RW_UpgraderMod.Settings.customAreaLabel);
+                    return area == null || area[t.Position];
+                default:
+                    return true;
+            }
+        }
+
         public static List<ThingDefCountClass> RequiredResources(Thing t)
         {
             CompUpgradable upgradable = GetUpgradable(t);

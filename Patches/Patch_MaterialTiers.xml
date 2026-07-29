@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StuffCategoryDef[defName="Woody"]</xpath>
+    <value>
+      <modExtensions>
+        <li Class="RW_Upgrader.MaterialTierExtension">
+          <tier>0</tier>
+        </li>
+      </modExtensions>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StuffCategoryDef[defName="Stony"]</xpath>
+    <value>
+      <modExtensions>
+        <li Class="RW_Upgrader.MaterialTierExtension">
+          <tier>1</tier>
+        </li>
+      </modExtensions>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StuffCategoryDef[defName="Metallic"]</xpath>
+    <value>
+      <modExtensions>
+        <li Class="RW_Upgrader.MaterialTierExtension">
+          <tier>2</tier>
+        </li>
+      </modExtensions>
+    </value>
+  </Operation>
+</Patch>

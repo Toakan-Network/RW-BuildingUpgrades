@@ -8,6 +8,8 @@ namespace RW_Upgrader
     {
         public static JobDef Upgrade;
 
+        public static JobDef UpgradeMaterial;
+
         static JobDefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(JobDefOf));

@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Assembly-CSharp">
       <HintPath>$(UserProfile)\.nuget\packages\krafs.rimworld.ref\1.6.4518\ref\net472\Assembly-CSharp.dll</HintPath>
@@ -57,9 +58,14 @@
     <Compile Include="Components\CompProperties_Upgradable.cs" />
     <Compile Include="DefsOf\JobDefOf.cs" />
     <Compile Include="JobDrivers\JobDriver_Upgrade.cs" />
+    <Compile Include="JobDrivers\JobDriver_UpgradeMaterial.cs" />
     <Compile Include="WorkGivers\WorkGiver_Upgrade.cs" />
+    <Compile Include="WorkGivers\WorkGiver_UpgradeMaterial.cs" />
     <Compile Include="FloatMenu\FloatMenuOptionProvider_Upgrade.cs" />
+    <Compile Include="FloatMenu\FloatMenuOptionProvider_UpgradeMaterial.cs" />
     <Compile Include="Utils\UpgradeUtility.cs" />
+    <Compile Include="Materials\MaterialTierExtension.cs" />
+    <Compile Include="Materials\MaterialUpgradeUtility.cs" />
     <Compile Include="Settings\RW_UpgraderSettings.cs" />
     <Compile Include="Settings\RW_UpgraderMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
